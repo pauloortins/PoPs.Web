@@ -51,13 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EFContext.cs" />
-    <Compile Include="Migrations\201206052043467_MigrationZero.cs" />
-    <Compile Include="Migrations\201206052043467_MigrationZero.Designer.cs">
-      <DependentUpon>201206052043467_MigrationZero.cs</DependentUpon>
+    <Compile Include="Entity\EFContext.cs" />
+    <Compile Include="Migrations\201206052131101_MigrationZero.cs" />
+    <Compile Include="Migrations\201206052131101_MigrationZero.Designer.cs">
+      <DependentUpon>201206052131101_MigrationZero.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

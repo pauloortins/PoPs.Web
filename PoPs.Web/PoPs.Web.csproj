@@ -127,7 +127,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -167,6 +169,10 @@
     <ProjectReference Include="..\PoPs.Domain\PoPs.Domain.csproj">
       <Project>{BDDCC01E-0588-46D1-A84F-B71C42EE5FC8}</Project>
       <Name>PoPs.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoPs.Repository\PoPs.Repository.csproj">
+      <Project>{0FA0A0F2-F1E9-4999-AFC1-7AD1EF872DE1}</Project>
+      <Name>PoPs.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\PoPs.Service\PoPs.Service.csproj">
       <Project>{BE2F9579-72F4-4F60-845E-0E624B412FDF}</Project>

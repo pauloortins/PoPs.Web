@@ -8,7 +8,7 @@ namespace PoPs.Repository.Migrations
     {
         string IMigrationMetadata.Id
         {
-            get { return "201206052043467_MigrationZero"; }
+            get { return "201206052131101_MigrationZero"; }
         }
         
         string IMigrationMetadata.Source

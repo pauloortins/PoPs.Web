@@ -10,6 +10,8 @@ namespace PoPs.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using PoPs.Service;
+    using PoPs.Repository.Repositories;
 
     public static class NinjectWebCommon 
     {
@@ -53,6 +55,8 @@ namespace PoPs.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
         }        
     }
 }
