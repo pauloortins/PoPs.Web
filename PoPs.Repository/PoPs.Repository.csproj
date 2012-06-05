@@ -51,11 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFContext.cs" />
+    <Compile Include="Migrations\201206052043467_MigrationZero.cs" />
+    <Compile Include="Migrations\201206052043467_MigrationZero.Designer.cs">
+      <DependentUpon>201206052043467_MigrationZero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PoPs.Domain\PoPs.Domain.csproj">
+      <Project>{BDDCC01E-0588-46D1-A84F-B71C42EE5FC8}</Project>
+      <Name>PoPs.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

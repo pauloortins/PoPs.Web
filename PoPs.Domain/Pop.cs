@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace PoPs.Domain
 {
     public class Pop
     {
+        [Key]
         public int Id { get; set; }
-
         public string Title { get; set; }
-
         public string URL { get; set; }
-
         public DateTime publishDate { get; set; }
 
         public virtual User User { get; set;}
