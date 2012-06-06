@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PoPs.Domain\PoPs.Domain.csproj">
+      <Project>{BDDCC01E-0588-46D1-A84F-B71C42EE5FC8}</Project>
+      <Name>PoPs.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoPs.Repository\PoPs.Repository.csproj">
+      <Project>{0FA0A0F2-F1E9-4999-AFC1-7AD1EF872DE1}</Project>
+      <Name>PoPs.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

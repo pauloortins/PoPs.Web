@@ -3,15 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9E9D4A1B-FAF4-4429-ADD8-3E7791953659}</ProjectGuid>
+    <ProjectGuid>{A61B6E3C-242C-4EC9-B2FA-645F8A8FC442}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PoPs.Specs</RootNamespace>
     <AssemblyName>PoPs.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,35 +39,65 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.8.1\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.22.0\lib\net40\WebDriver.dll</HintPath>
+      <HintPath>..\packages\Selenium.WebDriver.2.22.1\lib\net40\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.22.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <HintPath>..\packages\Selenium.Support.2.22.1\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrowserUtility.cs" />
+    <Compile Include="Features\Users\LoginFeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginFeature.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Users\RegisterUser.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RegisterUser.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\Inspection\InspectionSteps.cs" />
+    <Compile Include="Steps\Navigation\InputSteps.cs" />
+    <Compile Include="Steps\Navigation\NavigationSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\Users\LoginFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginFeature.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Users\RegisterUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RegisterUser.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Steps\Cleanup\" />
+    <Folder Include="Steps\DataSetup\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

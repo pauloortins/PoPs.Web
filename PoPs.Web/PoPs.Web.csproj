@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -44,6 +45,12 @@
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -67,8 +74,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -116,7 +127,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -151,6 +164,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PoPs.Domain\PoPs.Domain.csproj">
+      <Project>{BDDCC01E-0588-46D1-A84F-B71C42EE5FC8}</Project>
+      <Name>PoPs.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoPs.Repository\PoPs.Repository.csproj">
+      <Project>{0FA0A0F2-F1E9-4999-AFC1-7AD1EF872DE1}</Project>
+      <Name>PoPs.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoPs.Service\PoPs.Service.csproj">
+      <Project>{BE2F9579-72F4-4F60-845E-0E624B412FDF}</Project>
+      <Name>PoPs.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
