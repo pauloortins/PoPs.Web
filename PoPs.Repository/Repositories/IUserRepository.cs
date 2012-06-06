@@ -8,6 +8,6 @@ namespace PoPs.Repository.Repositories
 {
     public interface IUserRepository
     {
-        User GetUserById(int id);
+        User GetById(int id);
     }
 }

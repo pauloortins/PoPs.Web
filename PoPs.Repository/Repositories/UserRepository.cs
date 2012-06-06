@@ -8,7 +8,7 @@ namespace PoPs.Repository.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public User GetUserById(int id)
+        public User GetById(int id)
         {
             throw new NotImplementedException();
         }

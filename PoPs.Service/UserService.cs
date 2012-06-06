@@ -16,9 +16,9 @@ namespace PoPs.Service
             this.repository = repository;
         }
 
-        public User GetUserById(int id)
+        public User GetById(int id)
         {
-            return this.repository.GetUserById(id);
+            return this.repository.GetById(id);
         }
     }
 }

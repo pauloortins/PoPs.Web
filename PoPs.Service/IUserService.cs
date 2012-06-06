@@ -8,6 +8,6 @@ namespace PoPs.Service
 {
     public interface IUserService
     {
-        User GetUserById(int id);
+        User GetById(int id);
     }
 }
