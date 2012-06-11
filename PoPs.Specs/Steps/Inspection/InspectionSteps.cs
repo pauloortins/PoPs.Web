@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PoPs.Specs.Steps.Inspection
 {
@@ -12,7 +14,13 @@ namespace PoPs.Specs.Steps.Inspection
         [Then("should show the following error messages")]
         public void ShouldShowFollowingErrorMessages(TechTalk.SpecFlow.Table table)
         {
-            ScenarioContext.Current.Pending();
+            IWebElement element;
+
+            foreach (TechTalk.SpecFlow.TableRow row in table.Rows)
+            {
+                element = BrowserUtility.Browser.FindElement(By.CssSelector("input[data-valmsg-for='" + row["id"] + "']"));
+                Assert.AreEqual(row["value"], element.Text);
+            }
         }
 
         [Then("should be redirected to '(.*)'")]

@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 
 namespace PoPs.Specs
 {
@@ -16,7 +17,7 @@ namespace PoPs.Specs
         [BeforeScenario(@"ResetForEachTest")]
         public void InitTest()
         {
-            Browser = new FirefoxDriver();
+            Browser = new InternetExplorerDriver();
             Browser.Manage().Cookies.DeleteAllCookies();
         }
 

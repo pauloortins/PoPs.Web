@@ -8,17 +8,17 @@ Scenario: Register without specify data
 	And click in the link 'Register'
     And fill fields with following data
        | id               | value |
-       | user             |       |
-       | email            |       |
-       | password         |       |
-       | passwordRepeated |       |
+       | User             |       |
+       | Email            |       |
+       | Password         |       |
+       | PasswordRepeated |       |
 	When click in the button 'Register'
 	Then should show the following error messages
        | id               | Value                |
-       | user             | user is required     |
-       | email            | email is required    |
-       | password         | password is required |
-       | passwordRepeated | password is required |
+       | User             | User is required     |
+       | Email            | Email is required    |
+       | Password         | Password is required |
+       | PasswordRepeated | Password is required |
 
 @ResetForEachTest
 Scenario: Register with different passwords
@@ -26,14 +26,14 @@ Scenario: Register with different passwords
     And click in the link 'Register'
     And fill fields with following data
         | id               | value          |
-        | user             | user           |
-        | email            | user@gmail.com |
-        | password         | 123            |
-        | passwordRepeated | 1234           |
+        | User             | user           |
+        | Email            | user@gmail.com |
+        | Password         | 123            |
+        | PasswordRepeated | 1234           |
     When click in the button 'Register'
     Then should show the following error messages
          | id               | Value                |
-         | passwordRepeated | password fields must be equal |
+         | PasswordRepeated | password fields must be equal |
 
 @ResetForEachTest
 Scenario: Register with invalid email
@@ -41,14 +41,14 @@ Scenario: Register with invalid email
     And click in the link 'Register'
     And fill fields with following data
         | id               | value          |
-        | user             | user           |
-        | email            | user           |
-        | password         | 1234           |
-        | passwordRepeated | 1234           |
+        | User             | user           |
+        | Email            | user           |
+        | Password         | 1234           |
+        | PasswordRepeated | 1234           |
     When click in the button 'Register'
     Then should show the following error messages
          | id    | Value                        |
-         | email | email is in a invalid format |
+         | Email | email is in a invalid format |
 
 @ResetForEachTest
 Scenario: Register with valid data
@@ -56,9 +56,9 @@ Scenario: Register with valid data
     And click in the link 'Register'
     And fill fields with following data
         | id               | value          |
-        | user             | user           |
-        | email            | user@gmail.com |
-        | password         | 1234           |
-        | passwordRepeated | 1234           |
+        | User             | user           |
+        | Email            | user@gmail.com |
+        | Password         | 1234           |
+        | PasswordRepeated | 1234           |
     When click in the button 'Register'
     Then should be redirected to 'User/Success'

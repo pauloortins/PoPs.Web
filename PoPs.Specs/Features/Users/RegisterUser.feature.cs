@@ -86,16 +86,16 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "value"});
             table1.AddRow(new string[] {
-                        "user",
+                        "User",
                         ""});
             table1.AddRow(new string[] {
-                        "email",
+                        "Email",
                         ""});
             table1.AddRow(new string[] {
-                        "password",
+                        "Password",
                         ""});
             table1.AddRow(new string[] {
-                        "passwordRepeated",
+                        "PasswordRepeated",
                         ""});
 #line 9
     testRunner.And("fill fields with following data", ((string)(null)), table1);
@@ -106,17 +106,17 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "Value"});
             table2.AddRow(new string[] {
-                        "user",
-                        "user is required"});
+                        "User",
+                        "User is required"});
             table2.AddRow(new string[] {
-                        "email",
-                        "email is required"});
+                        "Email",
+                        "Email is required"});
             table2.AddRow(new string[] {
-                        "password",
-                        "password is required"});
+                        "Password",
+                        "Password is required"});
             table2.AddRow(new string[] {
-                        "passwordRepeated",
-                        "password is required"});
+                        "PasswordRepeated",
+                        "Password is required"});
 #line 16
  testRunner.Then("should show the following error messages", ((string)(null)), table2);
 #line hidden
@@ -141,16 +141,16 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "value"});
             table3.AddRow(new string[] {
-                        "user",
+                        "User",
                         "user"});
             table3.AddRow(new string[] {
-                        "email",
+                        "Email",
                         "user@gmail.com"});
             table3.AddRow(new string[] {
-                        "password",
+                        "Password",
                         "123"});
             table3.AddRow(new string[] {
-                        "passwordRepeated",
+                        "PasswordRepeated",
                         "1234"});
 #line 27
     testRunner.And("fill fields with following data", ((string)(null)), table3);
@@ -161,7 +161,7 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "Value"});
             table4.AddRow(new string[] {
-                        "passwordRepeated",
+                        "PasswordRepeated",
                         "password fields must be equal"});
 #line 34
     testRunner.Then("should show the following error messages", ((string)(null)), table4);
@@ -187,16 +187,16 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "value"});
             table5.AddRow(new string[] {
-                        "user",
+                        "User",
                         "user"});
             table5.AddRow(new string[] {
-                        "email",
+                        "Email",
                         "user"});
             table5.AddRow(new string[] {
-                        "password",
+                        "Password",
                         "1234"});
             table5.AddRow(new string[] {
-                        "passwordRepeated",
+                        "PasswordRepeated",
                         "1234"});
 #line 42
     testRunner.And("fill fields with following data", ((string)(null)), table5);
@@ -207,7 +207,7 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "Value"});
             table6.AddRow(new string[] {
-                        "email",
+                        "Email",
                         "email is in a invalid format"});
 #line 49
     testRunner.Then("should show the following error messages", ((string)(null)), table6);
@@ -233,16 +233,16 @@ this.ScenarioSetup(scenarioInfo);
                         "id",
                         "value"});
             table7.AddRow(new string[] {
-                        "user",
+                        "User",
                         "user"});
             table7.AddRow(new string[] {
-                        "email",
+                        "Email",
                         "user@gmail.com"});
             table7.AddRow(new string[] {
-                        "password",
+                        "Password",
                         "1234"});
             table7.AddRow(new string[] {
-                        "passwordRepeated",
+                        "PasswordRepeated",
                         "1234"});
 #line 57
     testRunner.And("fill fields with following data", ((string)(null)), table7);

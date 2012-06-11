@@ -1,0 +1,14 @@
+﻿@using PoPs.Web.Models;
+@model UserViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Registrar usuário</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Registrar" />
+}
