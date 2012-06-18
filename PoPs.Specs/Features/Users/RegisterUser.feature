@@ -4,61 +4,62 @@
 
 @ResetForEachTest
 Scenario: Register without specify data
-	Given navigate to '/Home'
-	And click in the link 'Register'
+	Given navigate to ''
+	And click in the link registrar
     And fill fields with following data
        | id               | value |
-       | user             |       |
-       | email            |       |
-       | password         |       |
-       | passwordRepeated |       |
-	When click in the button 'Register'
+       | Login            |       |
+       | Email            |       |
+       | Password         |       |
+       | PasswordRepeated |       |
+	When click in the button registrar
 	Then should show the following error messages
-       | id               | Value                |
-       | user             | user is required     |
-       | email            | email is required    |
-       | password         | password is required |
-       | passwordRepeated | password is required |
+       | id               | value                                |
+       | Login            | 'Login' deve ser preenchido.         |
+       | Email            | 'Email' deve ser preenchido.         |
+       | Password         | 'Senha' deve ser preenchido.         |
+       | PasswordRepeated | 'Repetir Senha' deve ser preenchido. |
 
 @ResetForEachTest
 Scenario: Register with different passwords
-    Given navigate to '/Home'
-    And click in the link 'Register'
+    Given navigate to ''
+    And click in the link registrar
     And fill fields with following data
         | id               | value          |
-        | user             | user           |
-        | email            | user@gmail.com |
-        | password         | 123            |
-        | passwordRepeated | 1234           |
-    When click in the button 'Register'
+        | Login            | login          |
+        | Email            | user@gmail.com |
+        | Password         | 123            |
+        | PasswordRepeated | 1234           |
+    When click in the button registrar
     Then should show the following error messages
-         | id               | Value                |
-         | passwordRepeated | password fields must be equal |
+         | id               | value                                  |
+         | Password         | As senhas informadas devem ser iguais. |
+         | PasswordRepeated | As senhas informadas devem ser iguais. |
 
 @ResetForEachTest
 Scenario: Register with invalid email
-    Given navigate to '/Home'
-    And click in the link 'Register'
+    Given navigate to ''
+    And click in the link registrar
     And fill fields with following data
-        | id               | value          |
-        | user             | user           |
-        | email            | user           |
-        | password         | 1234           |
-        | passwordRepeated | 1234           |
-    When click in the button 'Register'
+        | id               | value |
+        | Login            | login |
+        | Email            | user  |
+        | Password         | 1234  |
+        | PasswordRepeated | 1234  |
+    When click in the button registrar
     Then should show the following error messages
-         | id    | Value                        |
-         | email | email is in a invalid format |
+         | id    | value                                         |
+         | Email | 'Email' deve ser um endereço de email válido. |
 
 @ResetForEachTest
 Scenario: Register with valid data
-    Given navigate to '/Home'
-    And click in the link 'Register'
+    Given navigate to ''
+    And click in the link registrar
     And fill fields with following data
         | id               | value          |
-        | user             | user           |
-        | email            | user@gmail.com |
-        | password         | 1234           |
-        | passwordRepeated | 1234           |
-    When click in the button 'Register'
-    Then should be redirected to 'User/Success'
+        | Login            | login          |
+        | Email            | user@gmail.com |
+        | Password         | 1234           |
+        | PasswordRepeated | 1234           |
+    When click in the button registrar
+    Then should show text 'Cadastro efetuado com sucesso!' at 'h2'

@@ -9,5 +9,9 @@ namespace PoPs.Service
     public interface IUserService
     {
         User GetById(int id);
+
+        void Create(User user);
+
+        bool Login(string username, string password);
     }
 }

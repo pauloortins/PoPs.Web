@@ -12,6 +12,7 @@ namespace PoPs.Web.App_Start
     using Ninject.Web.Common;
     using PoPs.Service;
     using PoPs.Repository.Repositories;
+    using PoPs.Web.Infrastructure;
 
     public static class NinjectWebCommon 
     {
@@ -57,6 +58,7 @@ namespace PoPs.Web.App_Start
         {
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }        
     }
 }

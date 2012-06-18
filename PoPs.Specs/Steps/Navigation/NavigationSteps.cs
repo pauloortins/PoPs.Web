@@ -14,7 +14,7 @@ namespace PoPs.Specs.Steps.Navigation
         [Given("navigate to (.*)")]
         public void NavigateTo(string path)
         {
-            BrowserUtility.Browser.Navigate().GoToUrl("http://localhost:10228" + "path");
+            BrowserUtility.Browser.Navigate().GoToUrl("http://localhost:10228");
         }
 
         [Given("click in the link (.*)")]
