@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using PoPs.Repository.Migrations;
 
 namespace PoPs.Specs
 {
@@ -17,8 +18,10 @@ namespace PoPs.Specs
         [BeforeScenario(@"ResetForEachTest")]
         public void InitTest()
         {
-            Browser = new InternetExplorerDriver();
+            Browser = new FirefoxDriver();
             Browser.Manage().Cookies.DeleteAllCookies();
+
+            RestartDB.RestartDataBase();
         }
 
         [AfterScenario(@"ResetForEachTest")]

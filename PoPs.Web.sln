@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoPs.Specs", "PoPs.Specs\PoPs.Specs.csproj", "{A61B6E3C-242C-4EC9-B2FA-645F8A8FC442}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoPs.Infrasctructure", "PoPs.Infrasctructure\PoPs.Infrasctructure.csproj", "{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PoPs.Web.vsmdi
@@ -53,6 +55,10 @@ Global
 		{A61B6E3C-242C-4EC9-B2FA-645F8A8FC442}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A61B6E3C-242C-4EC9-B2FA-645F8A8FC442}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A61B6E3C-242C-4EC9-B2FA-645F8A8FC442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

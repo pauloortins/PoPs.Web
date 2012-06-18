@@ -20,5 +20,15 @@ namespace PoPs.Service
         {
             return this.repository.GetById(id);
         }
+
+        public void Create(User user)
+        {
+            repository.Create(user);
+        }
+
+        public bool Login(string login, string password)
+        {
+            return repository.GetAll().Where(x => x.Login.Equals(login) && x.Password.Equals(password)).Count() > 0;
+        }
     }
 }
