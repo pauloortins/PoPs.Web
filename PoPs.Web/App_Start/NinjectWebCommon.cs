@@ -13,6 +13,13 @@ namespace PoPs.Web.App_Start
     using PoPs.Service;
     using PoPs.Repository.Repositories;
     using PoPs.Web.Infrastructure;
+    using PoPs.Repository;
+    using System.Web.Security;
+    using System.Web.Mvc;
+    using FluentValidation.Mvc;
+    using PoPs.Web.Validations;
+    using FluentValidation;
+    using PoPs.Web.Models;
 
     public static class NinjectWebCommon 
     {
@@ -47,6 +54,11 @@ namespace PoPs.Web.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             
             RegisterServices(kernel);
+
+            var validatorFactory = new NinjectValidatorFactory(kernel);
+            ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(validatorFactory));
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
+
             return kernel;
         }
 
@@ -59,6 +71,10 @@ namespace PoPs.Web.App_Start
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
-        }        
+            kernel.Bind(typeof(IValidator<UserRegisterViewModel>)).To<UserRegisterViewModelValidator>();
+            kernel.Bind(typeof(IValidator<UserLoginViewModel>)).To<UserLoginViewModelValidator>();
+            kernel.Bind(typeof(IValidator<UserForgotPasswordViewModel>)).To<UserForgotPasswordViewModelValidator>();
+        }   
+            
     }
 }

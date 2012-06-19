@@ -13,5 +13,9 @@ namespace PoPs.Service
         void Create(User user);
 
         bool Login(string username, string password);
+
+        User FindByLogin(string login);
+
+        User FindByEmail(string email);
     }
 }

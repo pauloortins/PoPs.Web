@@ -11,6 +11,7 @@ namespace PoPs.Repository.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(EFContext context)

@@ -5,17 +5,24 @@ using System.Web;
 using System.Web.Security;
 using Ninject;
 using PoPs.Service;
+using System.Web.Mvc;
 
 namespace PoPs.Web.Infrastructure
 {
     public class CustomMembershipProvider : MembershipProvider
     {
         [Inject]
-        public IUserService UserService { get; set; }
+        public IUserService userService
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<IUserService>();
+            }
+        }
 
         public override bool ValidateUser(string username, string password)
         {
-            return UserService.Login(username, password);
+            return userService.Login(username, password);
         }
 
         public override string ApplicationName

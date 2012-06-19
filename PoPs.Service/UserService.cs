@@ -30,5 +30,29 @@ namespace PoPs.Service
         {
             return repository.GetAll().Where(x => x.Login.Equals(login) && x.Password.Equals(password)).Count() > 0;
         }
+
+        public User FindByLogin(string login)
+        {
+            if (repository.GetAll().Where(x => x.Login.Equals(login)).Count() != 0)
+            {
+                return repository.GetAll().First(x => x.Login.Equals(login));
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public User FindByEmail(string email)
+        {
+            if (repository.GetAll().Where(x => x.Email.Equals(email)).Count() != 0)
+            {
+                return repository.GetAll().First(x => x.Email.Equals(email));
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model PoPs.Web.Models.UserForgotPasswordViewModel
+
+@{
+    ViewBag.Title = "Forgot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Resetar senha</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="resetar senha" />
+}

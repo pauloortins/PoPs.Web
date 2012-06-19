@@ -57,7 +57,7 @@ namespace PoPs.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Usuário ou Password inválido");
+                    ModelState.AddModelError("Login", "'Login' ou 'Senha' inválido(a).");
                     return View();
                 }
             }
@@ -65,6 +65,23 @@ namespace PoPs.Web.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public ActionResult Forgot()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Forgot(UserForgotPasswordViewModel forgotPasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return View();
         }
     }
 }

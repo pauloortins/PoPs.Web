@@ -68,5 +68,39 @@ namespace PoPs.Tests.Service
 
             isLogged.Should().Be(true);
         }
+
+        [TestMethod]
+        public void FindByEmail()
+        {
+            var mock = new Mock<IUserRepository>();
+            mock.Setup(x => x.GetAll()).Returns(new User[] {
+                new User() { Email = "earth@gmail.com"},
+                new User() { Email = "sun@gmail.com"},
+                new User() { Email = "wind@gmail.com"},
+                new User() { Email = "heart@gmail.com"}
+            });
+
+            var target = new UserService(mock.Object);
+            var result = target.FindByEmail("earth@gmail.com");
+
+            result.Email.Should().Be("earth@gmail.com");
+        }
+
+        [TestMethod]
+        public void FindByLogin()
+        {
+            var mock = new Mock<IUserRepository>();
+            mock.Setup(x => x.GetAll()).Returns(new User[] {
+                new User() { Login = "earth"},
+                new User() { Login = "sun"},
+                new User() { Login = "wind"},
+                new User() { Login = "heart"}
+            });
+
+            var target = new UserService(mock.Object);
+            var result = target.FindByLogin("earth");
+
+            result.Login.Should().Be("earth");
+        }
     }
 }

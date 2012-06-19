@@ -52,6 +52,22 @@ Scenario: Register with invalid email
          | Email | 'Email' deve ser um endereço de email válido. |
 
 @ResetForEachTest
+Scenario: Register with email/login already used
+    Given navigate to ''
+    And click in the link registrar
+    And fill fields with following data
+        | id               | value |
+        | Login            | abcd |
+        | Email            | abcd@gmail.com  |
+        | Password         | 1234  |
+        | PasswordRepeated | 1234  |
+    When click in the button registrar
+    Then should show the following error messages
+         | id    | value                 |
+         | Login | 'Login' já existente. |
+         | Email | 'Email' já existente. |
+
+@ResetForEachTest
 Scenario: Register with valid data
     Given navigate to ''
     And click in the link registrar
