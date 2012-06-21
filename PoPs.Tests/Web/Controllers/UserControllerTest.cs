@@ -148,5 +148,44 @@ namespace PoPs.Tests.Web.Controllers
 
             result.GetType().Should().Be(typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void GetLogin()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var result = target.Login();
+
+            result.GetType().Should().Be(typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void GetForgot()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var result = target.Forgot();
+
+            result.GetType().Should().Be(typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void GetLogout()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var result = target.Logout();
+
+            result.GetType().Should().Be(typeof(RedirectToRouteResult));
+        }
     }
 }

@@ -20,11 +20,6 @@ namespace PoPs.Service
             this.emailSender = emailSender;
         }
 
-        public User GetById(int id)
-        {
-            return this.repository.GetById(id);
-        }
-
         public void Create(User user)
         {
             repository.Create(user);

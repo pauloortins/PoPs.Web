@@ -28,7 +28,11 @@
                 <CodeCoverageItem binaryFile="PoPs.Service\bin\Debug\PoPs.Service.dll" pdbFile="PoPs.Service\bin\Debug\PoPs.Service.pdb" instrumentInPlace="true" />
                 <CodeCoverageItem binaryFile="PoPs.Repository\bin\Debug\PoPs.Repository.dll" pdbFile="PoPs.Repository\bin\Debug\PoPs.Repository.pdb" instrumentInPlace="true" />
                 <CodeCoverageItem binaryFile="PoPs.Domain\bin\Debug\PoPs.Domain.dll" pdbFile="PoPs.Domain\bin\Debug\PoPs.Domain.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="PoPs.Infrasctructure\bin\Debug\PoPs.Infrasctructure.dll" pdbFile="PoPs.Infrasctructure\bin\Debug\PoPs.Infrasctructure.pdb" instrumentInPlace="true" />
               </Regular>
+              <AspNet>
+                <AspNetCodeCoverageItem id="bfdabaed-198b-4fe3-b828-cf77003662a4" name="PoPs.Web" applicationRoot="/" url="http://localhost:0/" />
+              </AspNet>
             </CodeCoverage>
           </Configuration>
         </DataCollector>

@@ -15,11 +15,6 @@ namespace PoPs.Repository.Repositories
             this.context = context;
         }
 
-        public User GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Create(User user)
         {
             context.Users.Add(user);
