@@ -8,8 +8,6 @@ namespace PoPs.Repository.Repositories
 {
     public interface IUserRepository
     {
-        User GetById(int id);
-
         void Create(User user);
 
         IEnumerable<User> GetAll();

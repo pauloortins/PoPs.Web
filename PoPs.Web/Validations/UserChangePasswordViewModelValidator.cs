@@ -21,7 +21,7 @@ namespace PoPs.Web.Validations
             this.userLogin = userLogin;
 
             RuleFor(x => x.OldPassword).NotEmpty().WithMessage("'Senha Atual' deve ser preenchido.");
-            RuleFor(x => x.OldPassword).Must(BeEqualToUserPassword).WithMessage("'Senha Atual' inválida.");
+            RuleFor(x => x.OldPassword).Must(BeEqualToUserPassword).When(x => !string.IsNullOrWhiteSpace(x.OldPassword)).WithMessage("'Senha Atual' inválida.");
 
             RuleFor(x => x.NewPassword)
                 .NotEmpty().WithMessage("'Senha' deve ser preenchido.")
@@ -32,7 +32,7 @@ namespace PoPs.Web.Validations
                 .Equal(x => x.NewPassword).WithMessage("As senhas informadas devem ser iguais.");
         }
 
-        public bool BeEqualToUserPassword(string oldPassword)
+        private bool BeEqualToUserPassword(string oldPassword)
         {
             User user = userService.FindByLogin(userLogin);
 

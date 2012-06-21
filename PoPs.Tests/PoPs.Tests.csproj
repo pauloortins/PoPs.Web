@@ -72,6 +72,7 @@
     <Compile Include="Service\UserServiceTest.cs" />
     <Compile Include="Web\Controllers\UserControllerTest.cs" />
     <Compile Include="Web\Models\UserRegisterViewModelTest.cs" />
+    <Compile Include="Web\Validations\UserChangePasswordViewModelValidatorTest.cs" />
     <Compile Include="Web\Validations\UserForgotPasswordViewModelValidatorTest.cs" />
     <Compile Include="Web\Validations\UserLoginViewModelValidatorTest.cs" />
     <Compile Include="Web\Validations\UserRegisterViewModelValidatorTest.cs" />
