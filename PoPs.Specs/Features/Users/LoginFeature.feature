@@ -37,3 +37,10 @@ Scenario: Login with valid data
        | Password         | 1234      |
 	When click in the button login
 	Then should be redirected to ''
+    And should show account area
+
+@ResetForEachTest
+Scenario: User has to be able to logout
+	Given user is logged
+	When click in the link logout
+	Then should be logged out

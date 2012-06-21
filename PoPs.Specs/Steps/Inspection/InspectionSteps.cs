@@ -35,5 +35,18 @@ namespace PoPs.Specs.Steps.Inspection
         {
             BrowserUtility.Browser.FindElementWithWait(By.TagName(tag)).Text.Should().Be(text);
         }
+
+        [Then("should show account area")]
+        public void ShouldShowAccountArea()
+        {
+            BrowserUtility.Browser.FindElementWithWait(By.LinkText("logout")).Text.Should().Be("logout");
+        }
+
+        [Then("should be logged out")]
+        public void ShouldBeLoggedOut()
+        {
+            BrowserUtility.Browser.FindElementWithWait(By.LinkText("registrar")).Text.Should().Be("registrar");
+            BrowserUtility.Browser.FindElementWithWait(By.LinkText("login")).Text.Should().Be("login");
+        }
     }
 }

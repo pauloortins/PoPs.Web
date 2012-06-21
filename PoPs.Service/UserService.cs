@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using PoPs.Repository.Repositories;
 using PoPs.Domain;
+using PoPs.Infrasctructure;
+using System.Transactions;
 
 namespace PoPs.Service
 {
     public class UserService : IUserService
     {
         IUserRepository repository;
+        IEmailSender emailSender;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository repository, IEmailSender emailSender)
         {
             this.repository = repository;
+            this.emailSender = emailSender;
         }
 
         public User GetById(int id)
@@ -53,6 +57,34 @@ namespace PoPs.Service
             {
                 return null;
             }
+        }
+
+        public void SendNewPasswordToEmail(string email)
+        {
+            var newPassword = PasswordHash.GenerateNewPassword(DateTime.Now);
+
+            User user = FindByEmail(email);
+            user.Password = PasswordHash.GetMD5Hash(newPassword);
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                Update(user);
+                emailSender.SendNewPassword(user.Email, newPassword);
+                scope.Complete();
+            }
+        }
+
+        public void Update(User user)
+        {
+            repository.Update(user);
+        }
+
+
+        public void ChangePassword(string userLogin, string newPassword)
+        {
+            User user = FindByLogin(userLogin);
+            user.Password = PasswordHash.GetMD5Hash(newPassword);
+            Update(user);
         }
     }
 }

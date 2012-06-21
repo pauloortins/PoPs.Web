@@ -180,6 +180,27 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("click in the button login");
 #line 39
  testRunner.Then("should be redirected to \'\'");
+#line 40
+    testRunner.And("should show account area");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User has to be able to logout")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to login")]
+        public virtual void UserHasToBeAbleToLogout()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User has to be able to logout", new string[] {
+                        "ResetForEachTest"});
+#line 43
+this.ScenarioSetup(scenarioInfo);
+#line 44
+ testRunner.Given("user is logged");
+#line 45
+ testRunner.When("click in the link logout");
+#line 46
+ testRunner.Then("should be logged out");
 #line hidden
             this.ScenarioCleanup();
         }

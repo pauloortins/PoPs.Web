@@ -145,6 +145,38 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Try to reset password with valid email")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to get a new password")]
+        public virtual void TryToResetPasswordWithValidEmail()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try to reset password with valid email", new string[] {
+                        "ResetForEachTest"});
+#line 30
+this.ScenarioSetup(scenarioInfo);
+#line 31
+ testRunner.Given("navigate to \'\'");
+#line 32
+ testRunner.And("click in the link login");
+#line 33
+ testRunner.And("click in the link esqueci minha senha");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table5.AddRow(new string[] {
+                        "Email",
+                        "abcd@gmail.com"});
+#line 34
+    testRunner.And("fill fields with following data", ((string)(null)), table5);
+#line 37
+ testRunner.When("click in the button resetar senha");
+#line 38
+ testRunner.Then("should show text \'Uma nova senha foi enviada para o email indicado.\' at \'h2\'");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

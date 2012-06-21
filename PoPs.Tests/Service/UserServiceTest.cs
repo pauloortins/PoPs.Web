@@ -8,6 +8,7 @@ using PoPs.Repository.Repositories;
 using PoPs.Domain;
 using PoPs.Service;
 using SharpTestsEx;
+using PoPs.Infrasctructure;
 
 namespace PoPs.Tests.Service
 {
@@ -17,10 +18,11 @@ namespace PoPs.Tests.Service
         [TestMethod]
         public void GetById()
         {
-            var mock = new Mock<IUserRepository>();
-            mock.Setup(x => x.GetById(1)).Returns(new User{ Id=1, Login="Login"});
+            var serviceMock = new Mock<IUserRepository>();
+            var emailMock = new Mock<IEmailSender>();
+            serviceMock.Setup(x => x.GetById(1)).Returns(new User{ Id=1, Login="Login"});
 
-            var target = new UserService(mock.Object);
+            var target = new UserService(serviceMock.Object, emailMock.Object);
 
             User user = target.GetById(1);
 
@@ -32,7 +34,9 @@ namespace PoPs.Tests.Service
         public void Create()
         {
             var mock = new Mock<IUserRepository>();
-            var target = new UserService(mock.Object);
+            var emailMock = new Mock<IEmailSender>();
+
+            var target = new UserService(mock.Object, emailMock.Object);
 
             target.Create(new User());
 
@@ -47,7 +51,9 @@ namespace PoPs.Tests.Service
                 new User{ Login = "abcd", Password="1234"}
             });
 
-            var target = new UserService(mock.Object);
+            var emailMock = new Mock<IEmailSender>();
+
+            var target = new UserService(mock.Object, emailMock.Object);
 
             var isLogged = target.Login("abdcde", "12345");
 
@@ -62,7 +68,9 @@ namespace PoPs.Tests.Service
                 new User{ Login = "abcd", Password="1234"}
             });
 
-            var target = new UserService(mock.Object);
+            var emailMock = new Mock<IEmailSender>();
+
+            var target = new UserService(mock.Object, emailMock.Object);
 
             var isLogged = target.Login("abcd", "1234");
 
@@ -80,7 +88,9 @@ namespace PoPs.Tests.Service
                 new User() { Email = "heart@gmail.com"}
             });
 
-            var target = new UserService(mock.Object);
+            var emailMock = new Mock<IEmailSender>();
+
+            var target = new UserService(mock.Object, emailMock.Object);
             var result = target.FindByEmail("earth@gmail.com");
 
             result.Email.Should().Be("earth@gmail.com");
@@ -97,7 +107,9 @@ namespace PoPs.Tests.Service
                 new User() { Login = "heart"}
             });
 
-            var target = new UserService(mock.Object);
+            var emailMock = new Mock<IEmailSender>();
+
+            var target = new UserService(mock.Object, emailMock.Object);
             var result = target.FindByLogin("earth");
 
             result.Login.Should().Be("earth");

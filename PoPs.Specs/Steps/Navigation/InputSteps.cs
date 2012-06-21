@@ -21,5 +21,15 @@ namespace PoPs.Specs.Steps.Navigation
                 element.SendKeys(row["value"]);
             }
         }
+
+        [Given(@"Fill login fields with valid data")]
+        public void PreencheCamposComDadosValidos()
+        {
+            IWebElement username = BrowserUtility.Browser.FindElementWithWait(By.Id("Login"));
+            username.SendKeys("abcd");
+
+            IWebElement password = BrowserUtility.Browser.FindElementWithWait(By.Id("Password"));
+            password.SendKeys("1234");
+        }
     }
 }

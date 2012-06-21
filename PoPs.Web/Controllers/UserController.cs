@@ -78,7 +78,33 @@ namespace PoPs.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View();
+                userService.SendNewPasswordToEmail(forgotPasswordViewModel.Email);
+                return View("ForgotSuccess");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            authProvider.Signout();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(UserChangePasswordViewModel changedPassword)
+        {
+            if (ModelState.IsValid)
+            {
+                userService.ChangePassword(HttpContext.User.Identity.Name, changedPassword.NewPassword);
+                return View("PasswordChanged");
             }
 
             return View();

@@ -17,5 +17,11 @@ namespace PoPs.Service
         User FindByLogin(string login);
 
         User FindByEmail(string email);
+
+        void SendNewPasswordToEmail(string email);
+
+        void Update(User user);
+
+        void ChangePassword(string userLogin, string newPassword);
     }
 }

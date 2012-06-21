@@ -20,6 +20,8 @@ namespace PoPs.Web.App_Start
     using PoPs.Web.Validations;
     using FluentValidation;
     using PoPs.Web.Models;
+    using PoPs.Infrasctructure;
+    using PoPs.Infrasctructure.Email;
 
     public static class NinjectWebCommon 
     {
@@ -74,6 +76,8 @@ namespace PoPs.Web.App_Start
             kernel.Bind(typeof(IValidator<UserRegisterViewModel>)).To<UserRegisterViewModelValidator>();
             kernel.Bind(typeof(IValidator<UserLoginViewModel>)).To<UserLoginViewModelValidator>();
             kernel.Bind(typeof(IValidator<UserForgotPasswordViewModel>)).To<UserForgotPasswordViewModelValidator>();
+            kernel.Bind<IEmailSender>().To<EmailSender>();
+            kernel.Bind<EmailSettings>().To<EmailSettings>();
         }   
             
     }
