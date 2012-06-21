@@ -27,6 +27,7 @@ namespace PoPs.Specs
         [AfterScenario(@"ResetForEachTest")]
         public void FinishTest()
         {
+            RestartDB.RestartDataBase();
             Browser.Close();
         }
     }

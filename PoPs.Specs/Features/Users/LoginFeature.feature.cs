@@ -69,11 +69,11 @@ namespace PoPs.Specs.Features.Users
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Login with invalid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Login with empty data")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to login")]
-        public virtual void LoginWithInvalidData()
+        public virtual void LoginWithEmptyData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with invalid data", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with empty data", new string[] {
                         "ResetForEachTest"});
 #line 4
 this.ScenarioSetup(scenarioInfo);
@@ -107,6 +107,100 @@ this.ScenarioSetup(scenarioInfo);
                         "\'Senha\' deve ser preenchido."});
 #line 12
  testRunner.Then("should show the following error messages", ((string)(null)), table2);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Login with invalid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to login")]
+        public virtual void LoginWithInvalidData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with invalid data", new string[] {
+                        "ResetForEachTest"});
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 19
+ testRunner.Given("navigate to \'\'");
+#line 20
+ testRunner.And("click in the link login");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table3.AddRow(new string[] {
+                        "Login",
+                        "abcd"});
+            table3.AddRow(new string[] {
+                        "Password",
+                        "123456"});
+#line 21
+    testRunner.And("fill fields with following data", ((string)(null)), table3);
+#line 25
+ testRunner.When("click in the button login");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table4.AddRow(new string[] {
+                        "Login",
+                        "\'Login\' ou \'Senha\' inválido(a)."});
+#line 26
+ testRunner.Then("should show the following error messages", ((string)(null)), table4);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Login with valid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to login")]
+        public virtual void LoginWithValidData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with valid data", new string[] {
+                        "ResetForEachTest"});
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given("navigate to \'\'");
+#line 33
+ testRunner.And("click in the link login");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table5.AddRow(new string[] {
+                        "Login",
+                        "abcd"});
+            table5.AddRow(new string[] {
+                        "Password",
+                        "1234"});
+#line 34
+    testRunner.And("fill fields with following data", ((string)(null)), table5);
+#line 38
+ testRunner.When("click in the button login");
+#line 39
+ testRunner.Then("should be redirected to \'\'");
+#line 40
+    testRunner.And("should show account area");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User has to be able to logout")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to login")]
+        public virtual void UserHasToBeAbleToLogout()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User has to be able to logout", new string[] {
+                        "ResetForEachTest"});
+#line 43
+this.ScenarioSetup(scenarioInfo);
+#line 44
+ testRunner.Given("user is logged");
+#line 45
+ testRunner.When("click in the link logout");
+#line 46
+ testRunner.Then("should be logged out");
 #line hidden
             this.ScenarioCleanup();
         }

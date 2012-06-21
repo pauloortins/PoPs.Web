@@ -30,5 +30,12 @@ namespace PoPs.Repository.Repositories
         {
             return context.Users;
         }
+
+        public void Update(User user)
+        {
+            var oldUser = context.Users.Find(user.Id);
+            context.Entry(oldUser).CurrentValues.SetValues(user);
+            context.SaveChanges();
+        }
     }
 }

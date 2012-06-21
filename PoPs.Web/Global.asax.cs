@@ -5,6 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FluentValidation.Mvc;
+using Ninject.Modules;
+using PoPs.Repository.Repositories;
+using PoPs.Service;
+using Ninject;
+using System.Web.Security;
+using PoPs.Repository;
+using PoPs.Infrasctructure;
+using PoPs.Web.Infrastructure;
 
 namespace PoPs.Web
 {
@@ -36,8 +44,6 @@ namespace PoPs.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            FluentValidationModelValidatorProvider.Configure();
         }
     }
 }

@@ -13,5 +13,7 @@ namespace PoPs.Repository.Repositories
         void Create(User user);
 
         IEnumerable<User> GetAll();
+
+        void Update(User user);
     }
 }

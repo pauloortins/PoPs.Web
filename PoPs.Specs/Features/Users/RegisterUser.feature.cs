@@ -219,11 +219,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Register with valid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Register with email/login already used")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to:")]
-        public virtual void RegisterWithValidData()
+        public virtual void RegisterWithEmailLoginAlreadyUsed()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Register with valid data", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Register with email/login already used", new string[] {
                         "ResetForEachTest"});
 #line 55
 this.ScenarioSetup(scenarioInfo);
@@ -237,10 +237,10 @@ this.ScenarioSetup(scenarioInfo);
                         "value"});
             table7.AddRow(new string[] {
                         "Login",
-                        "login"});
+                        "abcd"});
             table7.AddRow(new string[] {
                         "Email",
-                        "user@gmail.com"});
+                        "abcd@gmail.com"});
             table7.AddRow(new string[] {
                         "Password",
                         "1234"});
@@ -251,7 +251,56 @@ this.ScenarioSetup(scenarioInfo);
     testRunner.And("fill fields with following data", ((string)(null)), table7);
 #line 64
     testRunner.When("click in the button registrar");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table8.AddRow(new string[] {
+                        "Login",
+                        "\'Login\' já existente."});
+            table8.AddRow(new string[] {
+                        "Email",
+                        "\'Email\' já existente."});
 #line 65
+    testRunner.Then("should show the following error messages", ((string)(null)), table8);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Register with valid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "User should be able to:")]
+        public virtual void RegisterWithValidData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Register with valid data", new string[] {
+                        "ResetForEachTest"});
+#line 71
+this.ScenarioSetup(scenarioInfo);
+#line 72
+    testRunner.Given("navigate to \'\'");
+#line 73
+    testRunner.And("click in the link registrar");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "id",
+                        "value"});
+            table9.AddRow(new string[] {
+                        "Login",
+                        "login"});
+            table9.AddRow(new string[] {
+                        "Email",
+                        "user@gmail.com"});
+            table9.AddRow(new string[] {
+                        "Password",
+                        "1234"});
+            table9.AddRow(new string[] {
+                        "PasswordRepeated",
+                        "1234"});
+#line 74
+    testRunner.And("fill fields with following data", ((string)(null)), table9);
+#line 80
+    testRunner.When("click in the button registrar");
+#line 81
     testRunner.Then("should show text \'Cadastro efetuado com sucesso!\' at \'h2\'");
 #line hidden
             this.ScenarioCleanup();

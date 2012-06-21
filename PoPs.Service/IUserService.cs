@@ -13,5 +13,15 @@ namespace PoPs.Service
         void Create(User user);
 
         bool Login(string username, string password);
+
+        User FindByLogin(string login);
+
+        User FindByEmail(string email);
+
+        void SendNewPasswordToEmail(string email);
+
+        void Update(User user);
+
+        void ChangePassword(string userLogin, string newPassword);
     }
 }

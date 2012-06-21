@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 namespace PoPs.Specs.Steps.Navigation
 {
     [Binding]
-    public class NavigationSteps
+    public class NavigationSteps : TechTalk.SpecFlow.Steps
     {
         [Given("navigate to (.*)")]
         public void NavigateTo(string path)
@@ -18,15 +18,26 @@ namespace PoPs.Specs.Steps.Navigation
         }
 
         [Given("click in the link (.*)")]
+        [When("click in the link (.*)")]
         public void ClickInLink(string linkName)
         {
             BrowserUtility.Browser.Click(By.LinkText(linkName));
         }
 
+        [Given("click in the button (.*)")]
         [When("click in the button (.*)")]
         public void ClickInButton(string buttonName)
         {
             BrowserUtility.Browser.Click(By.CssSelector("input[Value='" + buttonName + "']"));
+        }
+
+        [Given(@"user is logged")]
+        public void UserLogsIn()
+        {
+            Given(@"navigate to ''");
+            Given(@"click in the link login");
+            Given(@"Fill login fields with valid data");
+            Given(@"click in the button login");
         }
     }
 }

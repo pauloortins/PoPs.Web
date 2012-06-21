@@ -72,6 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserUtility.cs" />
+    <Compile Include="Features\Users\ForgotPasswordFeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForgotPasswordFeature.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Users\LoginFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,7 +94,13 @@
     <Compile Include="Steps\Navigation\NavigationSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Users\ForgotPasswordFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ForgotPasswordFeature.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Users\LoginFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginFeature.feature.cs</LastGenOutput>

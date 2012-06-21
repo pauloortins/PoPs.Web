@@ -20,5 +20,10 @@ namespace PoPs.Infrasctructure
             }
             return sb.ToString();
         }
+
+        public static string GenerateNewPassword(DateTime dateTime)
+        {
+            return GetMD5Hash(dateTime.ToLongTimeString());
+        }
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="Service\UserServiceTest.cs" />
     <Compile Include="Web\Controllers\UserControllerTest.cs" />
     <Compile Include="Web\Models\UserRegisterViewModelTest.cs" />
+    <Compile Include="Web\Validations\UserForgotPasswordViewModelValidatorTest.cs" />
     <Compile Include="Web\Validations\UserLoginViewModelValidatorTest.cs" />
     <Compile Include="Web\Validations\UserRegisterViewModelValidatorTest.cs" />
   </ItemGroup>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\PoPs.Domain\PoPs.Domain.csproj">
       <Project>{BDDCC01E-0588-46D1-A84F-B71C42EE5FC8}</Project>
       <Name>PoPs.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoPs.Infrasctructure\PoPs.Infrasctructure.csproj">
+      <Project>{D6A96DB8-E3DA-4CE4-855E-B0362F0F46C2}</Project>
+      <Name>PoPs.Infrasctructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\PoPs.Repository\PoPs.Repository.csproj">
       <Project>{0FA0A0F2-F1E9-4999-AFC1-7AD1EF872DE1}</Project>

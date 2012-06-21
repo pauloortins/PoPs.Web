@@ -73,7 +73,7 @@ namespace PoPs.Tests.Web.Controllers
         }
 
         [TestMethod]
-        public void TryToLoginWithInvalidData()
+        public void TryToLoginWithFalseAuthentication()
         {
             var userService = new Mock<IUserService>();
 
@@ -100,6 +100,53 @@ namespace PoPs.Tests.Web.Controllers
             var result = target.Login(new UserLoginViewModel() { Login = "abcd", Password = "1234" });
 
             result.GetType().Should().Be(typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void TryToLoginInvalidData()
+        {
+            var userService = new Mock<IUserService>();
+
+            var authProvider = new Mock<IAuthProvider>();
+            authProvider.Setup(x => x.Authenticate(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            target.ModelState.AddModelError("error", "error");
+            var result = target.Login(new UserLoginViewModel() { Login = "abcd", Password = "1234" });
+
+            result.GetType().Should().Be(typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void TryToRecoverPasswordWithValidData()
+        {
+            var userService = new Mock<IUserService>();
+
+            var authProvider = new Mock<IAuthProvider>();
+            authProvider.Setup(x => x.Authenticate(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var result = target.Forgot(new UserForgotPasswordViewModel() { });
+
+            result.GetType().Should().Be(typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void TryToRecoverPasswordWithInvalidData()
+        {
+            var userService = new Mock<IUserService>();
+
+            var authProvider = new Mock<IAuthProvider>();
+            authProvider.Setup(x => x.Authenticate(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            var target = new UserController(userService.Object, authProvider.Object);
+            target.ModelState.AddModelError("error", "error");
+
+            var result = target.Forgot(new UserForgotPasswordViewModel() { });
+
+            result.GetType().Should().Be(typeof(ViewResult));
         }
     }
 }

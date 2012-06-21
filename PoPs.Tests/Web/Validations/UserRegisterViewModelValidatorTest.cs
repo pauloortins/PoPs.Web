@@ -6,6 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PoPs.Web.Models;
 using PoPs.Web.Validations;
 using SharpTestsEx;
+using PoPs.Service;
+using Moq;
+using PoPs.Domain;
 
 namespace PoPs.Tests.Web.Validations
 {
@@ -16,7 +19,11 @@ namespace PoPs.Tests.Web.Validations
         public void TestingWithAllFieldsEmpty()
         {
             var viewModel = new UserRegisterViewModel();
-            var validator = new UserRegisterViewModelValidator();
+            var userService = new Mock<IUserService>();
+            userService.Setup(x => x.FindByLogin(It.IsAny<string>())).Returns<User>(null);
+            userService.Setup(x => x.FindByEmail(It.IsAny<string>())).Returns<User>(null);
+
+            var validator = new UserRegisterViewModelValidator(userService.Object);
             var results = validator.Validate(viewModel);
 
             results.Errors.Count.Should().Be(4);
@@ -37,7 +44,11 @@ namespace PoPs.Tests.Web.Validations
                 PasswordRepeated = "12345"
             };
 
-            var validator = new UserRegisterViewModelValidator();
+            var userService = new Mock<IUserService>();
+            userService.Setup(x => x.FindByLogin(It.IsAny<string>())).Returns<User>(null);
+            userService.Setup(x => x.FindByEmail(It.IsAny<string>())).Returns<User>(null);
+            
+            var validator = new UserRegisterViewModelValidator(userService.Object);
             var results = validator.Validate(viewModel);
 
             results.Errors.Count.Should().Be(2);
@@ -56,7 +67,11 @@ namespace PoPs.Tests.Web.Validations
                 PasswordRepeated = "1234"
             };
 
-            var validator = new UserRegisterViewModelValidator();
+            var userService = new Mock<IUserService>();
+            userService.Setup(x => x.FindByLogin(It.IsAny<string>())).Returns<User>(null);
+            userService.Setup(x => x.FindByEmail(It.IsAny<string>())).Returns<User>(null);
+
+            var validator = new UserRegisterViewModelValidator(userService.Object);
             var results = validator.Validate(viewModel);
 
             results.Errors.Count.Should().Be(1);
@@ -74,10 +89,41 @@ namespace PoPs.Tests.Web.Validations
                 PasswordRepeated = "1234"
             };
 
-            var validator = new UserRegisterViewModelValidator();
+            var userService = new Mock<IUserService>();
+            userService.Setup(x => x.FindByLogin(It.IsAny<string>())).Returns<User>(null);
+            userService.Setup(x => x.FindByEmail(It.IsAny<string>())).Returns<User>(null);
+
+            var validator = new UserRegisterViewModelValidator(userService.Object);
             var results = validator.Validate(viewModel);
 
             results.Errors.Count.Should().Be(0);
+        }
+
+        [TestMethod]
+        public void TestingWithInvalidEmailAndLogin()
+        {
+            var viewModel = new UserRegisterViewModel()
+            {
+                Login = "abcd",
+                Email = "abcd@gmail.com",
+                Password = "1234",
+                PasswordRepeated = "1234"
+            };
+
+            var userService = new Mock<IUserService>();
+            userService.Setup(x => x.FindByLogin(It.IsAny<string>())).Returns(
+                new User{ Login = "abcd"}
+            );
+            userService.Setup(x => x.FindByEmail(It.IsAny<string>())).Returns(
+                new User{ Login = "abcd@gmail.com"}
+            );
+
+            var validator = new UserRegisterViewModelValidator(userService.Object);
+            var results = validator.Validate(viewModel);
+
+            results.Errors.Count.Should().Be(2);
+            results.Errors[0].ErrorMessage.Should().Be("'Login' já existente.");
+            results.Errors[1].ErrorMessage.Should().Be("'Email' já existente.");
         }
     }
 }

@@ -57,7 +57,7 @@ namespace PoPs.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Usuário ou Password inválido");
+                    ModelState.AddModelError("Login", "'Login' ou 'Senha' inválido(a).");
                     return View();
                 }
             }
@@ -65,6 +65,49 @@ namespace PoPs.Web.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public ActionResult Forgot()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Forgot(UserForgotPasswordViewModel forgotPasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                userService.SendNewPasswordToEmail(forgotPasswordViewModel.Email);
+                return View("ForgotSuccess");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            authProvider.Signout();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(UserChangePasswordViewModel changedPassword)
+        {
+            if (ModelState.IsValid)
+            {
+                userService.ChangePassword(HttpContext.User.Identity.Name, changedPassword.NewPassword);
+                return View("PasswordChanged");
+            }
+
+            return View();
         }
     }
 }

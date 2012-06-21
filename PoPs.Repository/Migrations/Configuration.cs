@@ -11,6 +11,7 @@ namespace PoPs.Repository.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(EFContext context)
@@ -25,6 +26,14 @@ namespace PoPs.Repository.Migrations
                 Email = "abcd@gmail.com",
                 Password = "81DC9BDB52D04DC20036DBD8313ED055"
             });
+
+            context.Users.Add(new User()
+            {
+                Login = "pops",
+                Email = "popsservice@gmail.com",
+                Password = "81DC9BDB52D04DC20036DBD8313ED055"
+            });
+
             context.SaveChanges();
         }
     }
