@@ -12,6 +12,8 @@ using PoPs.Domain;
 using PoPs.Web.Models;
 using System.Transactions;
 using PoPs.Web.Infrastructure;
+using System.Web;
+using System.Security.Principal;
 
 namespace PoPs.Tests.Web.Controllers
 {
@@ -25,7 +27,7 @@ namespace PoPs.Tests.Web.Controllers
             var authProvider = new Mock<IAuthProvider>();
             var target = new UserController(userService.Object, authProvider.Object);
 
-            ViewResult result = (ViewResult) target.Register();
+            ViewResult result = (ViewResult)target.Register();
 
             result.ViewName.Should().Be("");
         }
@@ -82,7 +84,7 @@ namespace PoPs.Tests.Web.Controllers
 
             var target = new UserController(userService.Object, authProvider.Object);
 
-            var result = target.Login(new UserLoginViewModel() { Login = "abcd", Password="1234" });
+            var result = target.Login(new UserLoginViewModel() { Login = "abcd", Password = "1234" });
 
             result.GetType().Should().Be(typeof(ViewResult));
         }
@@ -186,6 +188,66 @@ namespace PoPs.Tests.Web.Controllers
             var result = target.Logout();
 
             result.GetType().Should().Be(typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void GetChangePassword()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var result = target.ChangePassword();
+
+            result.GetType().Should().Be(typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void TryChangePasswordWithInvalidData()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var context = new Mock<HttpContextBase>();
+            context.Setup(x => x.User.Identity.Name).Returns("abcd");
+
+            target.ControllerContext = new ControllerContext
+            {
+                HttpContext = context.Object
+            };
+
+            var result = target.ChangePassword(new UserChangePasswordViewModel());
+
+            result.GetType().Should().Be(typeof(ViewResult));
+
+            ((ViewResult)result).ViewName.Should().Be("PasswordChanged");
+
+        }
+
+        [TestMethod]
+        public void TryChangePasswordWithValidData()
+        {
+            var userService = new Mock<IUserService>();
+            var authProvider = new Mock<IAuthProvider>();
+
+            var target = new UserController(userService.Object, authProvider.Object);
+
+            var context = new Mock<HttpContextBase>();
+            context.Setup(x => x.User.Identity.Name).Returns("abcd");
+
+            target.ControllerContext = new ControllerContext
+            {
+                HttpContext = context.Object
+            };
+
+            target.ModelState.AddModelError("Error", "Error");
+
+            var result = target.ChangePassword(new UserChangePasswordViewModel());
+
+            result.GetType().Should().Be(typeof(ViewResult));
         }
     }
 }
