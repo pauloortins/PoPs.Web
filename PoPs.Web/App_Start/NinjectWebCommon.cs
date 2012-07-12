@@ -73,6 +73,13 @@ namespace PoPs.Web.App_Start
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+
+            kernel.Bind<IPopService>().To<PopService>();
+            kernel.Bind<IPopRepository>().To<PopRepository>();
+
+            kernel.Bind<ITagService>().To<TagService>();
+            kernel.Bind<ITagRepository>().To<TagRepository>();
+
             kernel.Bind(typeof(IValidator<UserRegisterViewModel>)).To<UserRegisterViewModelValidator>();
             kernel.Bind(typeof(IValidator<UserLoginViewModel>)).To<UserLoginViewModelValidator>();
             kernel.Bind(typeof(IValidator<UserForgotPasswordViewModel>)).To<UserForgotPasswordViewModelValidator>();

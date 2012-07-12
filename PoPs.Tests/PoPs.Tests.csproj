@@ -69,7 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PopRpositoryTest.cs" />
+    <Compile Include="Repository\TagRepositoryTest.cs" />
     <Compile Include="Repository\UserRepositoryTest.cs" />
+    <Compile Include="Service\TagServiceTest.cs" />
+    <Compile Include="Service\PopServiceTest.cs" />
     <Compile Include="Service\UserServiceTest.cs" />
     <Compile Include="Web\Controllers\UserControllerTest.cs" />
     <Compile Include="Web\Models\UserRegisterViewModelTest.cs" />

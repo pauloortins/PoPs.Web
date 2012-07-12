@@ -56,10 +56,18 @@
     <Compile Include="Migrations\201206052131101_MigrationZero.Designer.cs">
       <DependentUpon>201206052131101_MigrationZero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201207120043409_PopPublishDateRename.cs" />
+    <Compile Include="Migrations\201207120043409_PopPublishDateRename.Designer.cs">
+      <DependentUpon>201207120043409_PopPublishDateRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RestartDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ITagRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Repositories\IPopRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\PopRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,9 +10,12 @@ namespace PoPs.Domain
     {
         [Key]
         public int Id { get; set; }
+
         public string Title { get; set; }
+
         public string URL { get; set; }
-        public DateTime publishDate { get; set; }
+
+        public DateTime PublishDate { get; set; }
 
         public virtual User User { get; set;}
 
