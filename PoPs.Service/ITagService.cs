@@ -6,12 +6,12 @@ using PoPs.Domain;
 
 namespace PoPs.Service
 {
-    public interface IPopService
+    public interface ITagService
     {
-        void Create(Pop user);
+        void Create(Tag tag);
 
-        void Update(Pop user);
+        void Update(Tag tag);
 
-        IEnumerable<Pop> GetAll();
+        IEnumerable<Tag> GetAll();
     }
 }

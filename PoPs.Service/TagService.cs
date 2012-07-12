@@ -9,26 +9,26 @@ using System.Transactions;
 
 namespace PoPs.Service
 {
-    public class PopService : IPopService
+    public class TagService : ITagService
     {
-        IPopRepository repository;
+        ITagRepository repository;
 
-        public PopService(IPopRepository repository)
+        public TagService(ITagRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Create(Pop pop)
+        public void Create(Tag tag)
         {
-            repository.Create(pop);
+            repository.Create(tag);
         }
 
-        public void Update(Pop pop)
+        public void Update(Tag tag)
         {
-            repository.Update(pop);
+            repository.Update(tag);
         }
 
-        public IEnumerable<Pop> GetAll()
+        public IEnumerable<Tag> GetAll()
         {
             return repository.GetAll();
         }
