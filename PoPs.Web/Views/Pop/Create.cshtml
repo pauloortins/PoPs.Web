@@ -1,0 +1,13 @@
+﻿@model PoPs.Web.Models.PopViewModel
+@using PoPs.Web.HtmlHelpers
+@{
+    ViewBag.Title = "Enviar PoP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Enviar PoP</h2>
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    @Html.CheckBoxListFor(x => x.SelectedTags, x => x.Tags)
+}
