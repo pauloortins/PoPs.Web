@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PoPs.Service;
 using PoPs.Web.Models;
+using PoPs.Domain;
 
 namespace PoPs.Web.Controllers
 {
@@ -21,11 +22,19 @@ namespace PoPs.Web.Controllers
 
         public ActionResult Create()
         {
+            Dictionary<int, string> tagsListItem = this.tagService.GetAll().ToList().ToDictionary(x => x.Id, x => x.Name);
+
             PopViewModel viewModel = new PopViewModel()
             {
-                Tags = this.tagService.GetAll()
+                TagsListItem = tagsListItem
             };
 
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(PopViewModel viewModel)
+        {
             return View(viewModel);
         }
     }
