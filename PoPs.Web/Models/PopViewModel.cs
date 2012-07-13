@@ -17,8 +17,8 @@ namespace PoPs.Web.Models
         [Display(Name = "Link")]
         public string Url { get; set; }
 
-        public IEnumerable<Tag> Tags { get; set; }
+        public IList<int> SelectedTags { get; set; }
 
-        public IEnumerable<int> SelectedTags { get; set; }
+        public Dictionary<int, string> TagsListItem { get; set; }
     }
 }

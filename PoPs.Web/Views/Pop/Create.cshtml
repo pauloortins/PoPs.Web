@@ -6,8 +6,9 @@
 }
 <h2>
     Enviar PoP</h2>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Pop"))
 {
     @Html.EditorForModel()
-    @Html.CheckBoxListFor(x => x.SelectedTags, x => x.Tags)
+    @Html.CheckBoxListFor(x => x.SelectedTags, x => x.TagsListItem)
+    <input type="submit" value="Enviar" />
 }
